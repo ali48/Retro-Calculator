@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     var leftValue = ""
     var rightValue = ""
     var currentOperation: Operation = Operation.Empty
-    
+    var result = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,32 @@ class ViewController: UIViewController {
     func processOperation(op: Operation) {
         
         if currentOperation != Operation.Empty {
-            //Do Math
+            //Math operations
+            
+            if runningValue != "" {
+                rightValue = runningValue
+                runningValue = ""
+                
+                if currentOperation == Operation.Multiply {
+                    result = "\(Double(leftValue)! * Double(rightValue)!)"
+                }else if currentOperation == Operation.Divide {
+                    result = "\(Double(leftValue)! / Double(rightValue)!)"
+                }else if currentOperation == Operation.Add {
+                    result = "\(Double(leftValue)! + Double(rightValue)!)"
+                }else if currentOperation == Operation.Subtract {
+                    result = "\(Double(leftValue)! - Double(rightValue)!)"
+                }
+                
+                leftValue = result
+                counterLbl.text = result
+ 
+                
+                
+            }
+            
+            currentOperation = op
+            
+            
         }else {
             // This is first time operator is pressed
             leftValue = runningValue
