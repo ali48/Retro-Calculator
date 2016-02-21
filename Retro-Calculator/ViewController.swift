@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     var rightValue = ""
     var currentOperation: Operation = Operation.Empty
     var result = ""
+    var reset = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,20 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func onClearPressed(sender: AnyObject) {
+        toClearCounter()
+    }
+    
+    
+    
+    
+    func toClearCounter() {
+        currentOperation = Operation.Empty
+        counterLbl.text = ""
+        
+    }
+    
+    
     func processOperation(op: Operation) {
         
         if currentOperation != Operation.Empty {
@@ -76,8 +91,6 @@ class ViewController: UIViewController {
                 
                 leftValue = result
                 counterLbl.text = result
- 
-                
                 
             }
             
